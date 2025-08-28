@@ -1,0 +1,32 @@
+1.Why can’t Bloom Filters guarantee “yes”?
+    ->well all the things that we are passing will convert into bits by 
+      hashfunctions,no actual elements are stored.
+    ->so collision might happens and set all the bits.
+    ->this will give us a probable yes, not guaranteed.
+
+2.Why can’t we delete from a standard Bloom Filter?
+    ->each bit is set by different elements.
+    ->clearing the bits may result in erasing the evidence of other elements.
+
+3.What will happen if we keep adding elements without limit?
+    ->the array will fully filled with 1's.
+    ->which result in giving probability of yes while searching a element which is not
+      added yet.
+
+4.Which is more costly: false positives or false negatives? Why?
+    ->false negatives, because when it says data not present but actually data is in there.
+      this might result in actual data loss since we are skipping the data base.
+
+5.Can a Bloom Filter replace a Hash Table completely? Why/why not?
+    ->No, bloom filters donot store actual elements thus by we can't retrieve  data.
+    ->deletion is not possible.
+
+6.If I use only one hash function, is it still a Bloom Filter? What problems might arise?
+    ->yes.
+    ->poor structure.
+    ->chances of collisions is high.
+    ->false positive rate will increase.
+
+7.If my Bloom Filter bit array is completely filled with 1s, what will happen?
+    ->every lookup will result in probable yes.
+    ->it became useless.
