@@ -10,18 +10,22 @@ typedef struct Node{
 
 unsigned long hashFunc(const char* s){
     unsigned long h=0;
-    while(*s) h=h*131+*s++;
+    while(*s)
+        h=h*131+*s++;
     return h%HASH_SIZE;
 }
 
 // Create a key from character counts instead of sorting
-char* buildKey(char* s){
+char* buildKey(char* s)
+{
     int count[26]={0};
-    for(int i=0;s[i];i++)count[s[i]-'a']++;
+    for(int i=0;s[i];i++)
+        count[s[i]-'a']++;
     // Build key string "c1#c2#c3..."
     char buf[128]; // enough since sum(count)<=100
     char* p=buf;
-    for(int i=0;i<26;i++)p+=sprintf(p,"%d#",count[i]);
+    for(int i=0;i<26;i++)
+        p+=sprintf(p,"%d#",count[i]);
     return strdup(buf);
 }
 
@@ -85,4 +89,5 @@ char*** groupAnagrams(char** strs,int strsSize,int* returnSize,int** returnColum
         }
     }
     return result;
+
 }
